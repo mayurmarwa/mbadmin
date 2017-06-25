@@ -8,11 +8,26 @@
 
   <ion-navbar>
     <ion-title>Notifications</ion-title>
+      <ion-buttons end>
+          <button ion-button color="primary" (click)="addNew()">
+              Add New
+          </button>
+      </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content  text-center padding>
-    <h1>No Notifications!</h1>
+    
+
+
+    <ion-list>
+        <ion-item text-wrap *ngFor="let item of userlist | async">
+            <button ion-button clear item-right icon-only (click)="deleteNotification(item)"><ion-icon name="trash"></ion-icon></button>
+            <h3>{{item?.msg}}</h3>
+            <p>{{item?.createdAt | date:'dd MMM hh:mm a'}}</p>
+        </ion-item>
+
+    </ion-list>
 </ion-content>

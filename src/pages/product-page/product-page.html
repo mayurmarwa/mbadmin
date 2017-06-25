@@ -250,8 +250,8 @@
         </ion-row>
     </ion-grid>
     <div *ngIf="this.product?.uid != this.currentuser?.uid" text-center style="padding: 20px;">
-        <button ion-button round (click)="sendEnquiry()">
-            Send Enquiry
+        <button ion-button round (click)="viewProfile()">
+            View Seller Profile
         </button>
     </div>
     <div *ngIf="this.product?.uid === this.currentuser?.uid" text-center style="padding: 20px;">

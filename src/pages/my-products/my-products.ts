@@ -29,11 +29,14 @@ export class MyProductsPage {
         
 
 
-        storage.ready().then(() => {
-            storage.get('currentuser').then((val) => {
+       // storage.ready().then(() => {
+         //   storage.get('currentuser').then((val) => {
 
-                this.currentuser = JSON.parse(val);
-                this.productListref = firebase.database().ref('/products').orderByChild("uid").equalTo(this.currentuser.uid);
+                //this.currentuser = JSON.parse(val);
+                
+                this.currentuser = navParams.get("userID");
+                console.log(this.currentuser);
+                this.productListref = firebase.database().ref('/products').orderByChild("uid").equalTo(this.currentuser);
                 //this.enquiryList = this.af.database.list('/users/' + this.currentuserid + '/enquiries', {
                 //   query: {
                 //       orderByChild: "type",
@@ -63,11 +66,11 @@ export class MyProductsPage {
                     this.updateList();
                 });
                 
-            })
-                .catch((err) =>
-                    console.log(err));
-        }).catch((err) =>
-            console.log(err)); 
+            //})
+           //     .catch((err) =>
+            //        console.log(err));
+        //}).catch((err) =>
+          //  console.log(err)); 
 
         //this.currentuser = firebase.auth().currentUser;
         
@@ -103,12 +106,12 @@ export class MyProductsPage {
   }
   selectcat() {
 
-      this.navCtrl.push(SelectCategoryPage);
+      this.navCtrl.push(SelectCategoryPage, {userID: this.currentuser});
   }
   uploadProduct() {
 
       if (this.segment === 'add') {
-          this.navCtrl.push(SelectCategoryPage);
+          this.navCtrl.push(SelectCategoryPage, {userID: this.currentuser});
       }
   }
 

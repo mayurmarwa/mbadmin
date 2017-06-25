@@ -1,7 +1,5 @@
 {
-  "name": "MetBazaar",
-  "app_id": "ebeeee34",
-  "v2": true,
-  "typescript": true
-  
+  "name": "MetBazaar Admin",
+  "app_id": "mdadmin",
+  "type": "ionic-angular"
 }

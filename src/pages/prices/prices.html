@@ -30,6 +30,13 @@
      </div>
     
    <ion-list *ngIf="this.segment === 'lme' ">
+       <ion-row>
+           <ion-col text-center>
+               <button ion-button outline (click)="addlme()">Add</button>
+           </ion-col>
+          
+       </ion-row>
+
         <ion-item [class.up]="item?.type === 'up' " [class.down]="item?.type === 'down' " *ngFor="let item of lmeList | async" >
                         
             
@@ -37,7 +44,7 @@
             <ion-row>
                 <ion-col col-6 >
                     <h2>{{item?.name}}</h2>
-                    <h4>{{item?.time}}</h4>
+                    <h4>{{item?.time | date:'dd MMM hh:mm a' }}</h4>
                 </ion-col>
                 <ion-col col-6 class="price">
                     <ion-item *ngIf="item?.type === 'up' " no-lines>
@@ -51,17 +58,32 @@
 
                 </ion-col>
             </ion-row>
+
+            <ion-row>
+                <ion-col col-6 text-center>
+                    <button ion-button outline (click)="updatelme(item.$key,item.name,item.price,item.type)">Edit</button>
+                </ion-col>
+                <ion-col col-6 text-center>
+                    <button ion-button outline (click)="deletelme(item.$key)">Delete</button>
+                </ion-col>
+            </ion-row>
             
             </ion-item>
     </ion-list>
 
     <ion-list *ngIf="this.segment === 'mcx' ">
+        <ion-row>
+            <ion-col text-center>
+                <button ion-button outline (click)="addmcx()">Add</button>
+            </ion-col>
+
+        </ion-row>
         <ion-item [class.up]="item?.type === 'up' " [class.down]="item?.type === 'down' " *ngFor="let item of mcxList | async" >
             
             <ion-row>
                 <ion-col col-6 >
                     <h2>{{item?.name}}</h2>
-                    <h4>{{item?.time}}</h4>
+                    <h4>{{item?.time | date:'dd MMM hh:mm a' }}</h4>
                 </ion-col>
                 <ion-col col-6 class="price">
                     <ion-item *ngIf="item?.type === 'up' "  no-lines>
@@ -75,6 +97,14 @@
 
                 </ion-col>
                 
+            </ion-row>
+            <ion-row>
+                <ion-col col-6 text-center>
+                    <button ion-button outline (click)="updatemcx(item.$key,item.name,item.price,item.type)">Edit</button>
+                </ion-col>
+                <ion-col col-6 text-center>
+                    <button ion-button outline (click)="deletemcx(item.$key)">Delete</button>
+                </ion-col>
             </ion-row>
         </ion-item>
     </ion-list>

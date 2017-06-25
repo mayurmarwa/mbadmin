@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { AngularFire } from 'angularfire2';
+import { ProductData } from '../../providers/product-data';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 
@@ -25,12 +26,193 @@ export class PricesPage {
 
     
 
-    constructor(public navCtrl: NavController, public navParams: NavParams, public af: AngularFire) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, public af: AngularFire, public alertCtrl: AlertController, public productData: ProductData) {
         this.segment = "mcx";
 
 
         
 }
+
+    updatelme(key,name,price,type) {
+        let alert = this.alertCtrl.create({
+            message: "Edit",
+            inputs: [
+                {
+                    name: 'name',
+                    placeholder: 'Name',
+                    value: name
+                },
+                {
+                    name: 'price',
+                    placeholder: 'Price',
+                    value: price
+                },
+                {
+                    name: 'type',
+                    placeholder: 'up or down',
+                    value: type
+                }               
+            ],
+            buttons: [
+                {
+                    text: 'Cancel',
+                },
+                {
+                    text: 'Save',
+                    handler: data => {
+                        this.productData.updatelmePrices(key, data.name, data.price, data.type);
+                    }
+                }
+            ]
+        });
+        alert.present();
+    }
+
+    addlme() {
+        let alert = this.alertCtrl.create({
+            message: "Edit",
+            inputs: [
+                {
+                    name: 'name',
+                    placeholder: 'Name',
+                    //value: name
+                },
+                {
+                    name: 'price',
+                    placeholder: 'Price',
+                    //value: price
+                },
+                {
+                    name: 'type',
+                    placeholder: 'up or down',
+                    //value: type
+                }
+            ],
+            buttons: [
+                {
+                    text: 'Cancel',
+                },
+                {
+                    text: 'Save',
+                    handler: data => {
+                        this.productData.addlmePrices(data.name, data.price, data.type);
+                    }
+                }
+            ]
+        });
+        alert.present();
+    }
+
+    addmcx() {
+        let alert = this.alertCtrl.create({
+            message: "Edit",
+            inputs: [
+                {
+                    name: 'name',
+                    placeholder: 'Name',
+                    //value: name
+                },
+                {
+                    name: 'price',
+                    placeholder: 'Price',
+                    //value: price
+                },
+                {
+                    name: 'type',
+                    placeholder: 'Type',
+                    //value: type
+                }
+            ],
+            buttons: [
+                {
+                    text: 'Cancel',
+                },
+                {
+                    text: 'Save',
+                    handler: data => {
+                        this.productData.addmcxPrices(data.name, data.price, data.type);
+                    }
+                }
+            ]
+        });
+        alert.present();
+    }
+
+    updatemcx(key, name, price, type) {
+        let alert = this.alertCtrl.create({
+            message: "Edit",
+            inputs: [
+                {
+                    name: 'name',
+                    placeholder: 'Name',
+                    value: name
+                },
+                {
+                    name: 'price',
+                    placeholder: 'Price',
+                    value: price
+                },
+                {
+                    name: 'type',
+                    placeholder: 'Type',
+                    value: type
+                }
+            ],
+            buttons: [
+                {
+                    text: 'Cancel',
+                },
+                {
+                    text: 'Save',
+                    handler: data => {
+                        this.productData.updatemcxPrices(key, data.name, data.price, data.type);
+                    }
+                }
+            ]
+        });
+        alert.present();
+    }
+
+    deletelme(key: any) {
+        let alert = this.alertCtrl.create({
+            title: 'Delete Price?',
+            message: 'Do you want to delete ?',
+            buttons: [
+                {
+                    text: 'Cancel',
+                },
+                {
+                    text: 'Confirm',
+                    handler: data => {
+                        this.productData.deletelme(key);
+                        //this.navCtrl.pop();
+                    }
+                }
+            ]
+        });
+        alert.present();
+    }
+
+    deletemcx (key: any) {
+        let alert = this.alertCtrl.create({
+            title: 'Delete Price?',
+            message: 'Do you want to delete ?',
+            buttons: [
+                {
+                    text: 'Cancel',
+                },
+                {
+                    text: 'Confirm',
+                    handler: data => {
+                        this.productData.deletemcx(key);
+                        //this.navCtrl.pop();
+                    }
+                }
+            ]
+        });
+        alert.present();
+    }
+
 
 
   ionViewDidLoad() {
@@ -41,7 +223,12 @@ export class PricesPage {
   ionViewWillEnter() {
       console.log("prices will enter");
 
-      this.sub1 = this.af.database.list('/prices/lme')
+      this.sub1 = this.af.database.list('/prices/lme',{
+          query: {
+              orderByChild: 'time'
+
+          }
+      })
           .subscribe(data => {
               this.lmeList = [];
               data.forEach(obj => {
@@ -49,12 +236,17 @@ export class PricesPage {
                   this.lmeList.push(obj);
               });
               //this.requests.unsubscribe();
-              this.lmeList = Observable.of(this.lmeList);
+              this.lmeList = Observable.of(this.lmeList.reverse());
               //console.log(this.lmeList);
           });
 
 
-      this.sub2 = this.af.database.list('/prices/mcx')
+      this.sub2 = this.af.database.list('/prices/mcx', {
+          query: {
+              orderByChild: 'time'
+
+          }
+      })
           .subscribe(data => {
               this.mcxList = [];
               data.forEach(obj => {
@@ -62,7 +254,7 @@ export class PricesPage {
                   this.mcxList.push(obj);
               });
               //this.requests.unsubscribe();
-              this.mcxList = Observable.of(this.mcxList);
+              this.mcxList = Observable.of(this.mcxList.reverse());
               //console.log(this.mcxList);
           });
   }

@@ -57,8 +57,9 @@ export class AddProductPage {
     
     constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController, public af: AngularFire, public formBuilder: FormBuilder, public authService: AuthService, public actionSheetCtrl: ActionSheetController, public alertCtrl: AlertController,  private camera: Camera) {
         this.category = navParams.get("category");
-        this.currentuser = firebase.auth().currentUser;
-        this.currentuserid = this.currentuser.uid;
+        //this.currentuser = firebase.auth().currentUser;
+        this.currentuserid = navParams.get("userID");
+        console.log(this.currentuserid);
         //this.cattitle = this.category.title + " ";
         this.products = af.database.list('/products');
         this.userProducts = af.database.list('/users/' + this.currentuserid + '/products'); 
@@ -543,7 +544,7 @@ export class AddProductPage {
                                   }
                               )
                               if (this.category.catid === 10) {
-                                  this.af.database.object('users/' + this.currentuser.uid + '/products/' + data.key).set(
+                                  this.af.database.object('users/' + this.currentuserid + '/products/' + data.key).set(
                                       {
 
                                           islive: true,
@@ -565,9 +566,8 @@ export class AddProductPage {
                                           position: 'middle'
                                       });
                                       toast.present().then(() => {
-                                              this.navCtrl.popToRoot({ animate: false }).then(() => {
-                                              this.navCtrl.push(MyProductsPage, { animate: false });
-                                          });
+                                          this.navCtrl.pop().then(()=>{this.navCtrl.pop();});
+                                              
                                       });
                                           
                                           
@@ -580,7 +580,7 @@ export class AddProductPage {
                               }
                               else {
 
-                                  this.af.database.object('users/' + this.currentuser.uid + '/products/' + data.key).set(
+                                  this.af.database.object('users/' + this.currentuserid + '/products/' + data.key).set(
                                       {
 
                                           islive: true,
@@ -603,9 +603,7 @@ export class AddProductPage {
                                           position: 'middle'
                                       });
                                       toast.present().then(() => {
-                                          this.navCtrl.popToRoot({ animate: false }).then(() => {
-                                              this.navCtrl.push(MyProductsPage, { animate: false });
-                                          });
+                                          this.navCtrl.pop().then(()=>{this.navCtrl.pop();});
                                       });
 
                                   })
@@ -622,7 +620,7 @@ export class AddProductPage {
                           }
                       )
                       if (this.category.catid === 10) {
-                          this.af.database.object('users/' + this.currentuser.uid + '/products/' + data.key).set(
+                          this.af.database.object('users/' + this.currentuserid + '/products/' + data.key).set(
                               {
 
                                   islive: true,
@@ -643,9 +641,7 @@ export class AddProductPage {
                                   position: 'middle'
                               });
                               toast.present().then(() => {
-                                  this.navCtrl.popToRoot({ animate: false }).then(() => {
-                                      this.navCtrl.push(MyProductsPage, { animate: false });
-                                  });
+                                  this.navCtrl.pop().then(()=>{this.navCtrl.pop();});
                               });
 
 
@@ -654,7 +650,7 @@ export class AddProductPage {
                       }
                       else {
 
-                          this.af.database.object('users/' + this.currentuser.uid + '/products/' + data.key).set(
+                          this.af.database.object('users/' + this.currentuserid + '/products/' + data.key).set(
                               {
 
                                   islive: true,
@@ -678,9 +674,7 @@ export class AddProductPage {
                                   position: 'middle'
                               });
                               toast.present().then(() => {
-                                  this.navCtrl.popToRoot({ animate: false }).then(() => {
-                                      this.navCtrl.push(MyProductsPage, { animate: false });
-                                  });
+                                  this.navCtrl.pop().then(()=>{this.navCtrl.pop();});
                               });
 
                           })

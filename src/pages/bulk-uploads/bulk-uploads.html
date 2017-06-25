@@ -1,0 +1,66 @@
+<!--
+  Generated template for the BulkUploadsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Bulk Uploads</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-list>
+        <ion-item *ngFor="let enquiry of supportListRev | async " (click)="openenquirypage(enquiry)" no-lines>
+
+            <div ion-item *ngIf="!enquiry?.quote">
+                <div item-left>
+                    <div [ngClass]="{'gradeCircle2' : !enquiry?.unread, 'gradeCircle3' : enquiry?.unread}">{{enquiry?.product?.gradeval}}</div>
+                </div>
+                <ion-row>
+                    <ion-col>
+                        <p style="white-space: normal;">{{enquiry?.uid}}</p>
+                        <p>{{enquiry?.timestamp | date:'dd MMM hh:mm a'}}</p>
+                    </ion-col>
+                    <!--<ion-col>
+                        <img [src]="enquiry?.productImage">
+                    </ion-col>-->
+                </ion-row>
+                <h2 style="white-space: normal;">{{enquiry?.productName}}</h2>
+                <ion-row class="enq-details"><ion-col *ngIf="enquiry?.product?.sizes">Sizes:{{enquiry?.product?.sizes}} {{enquiry?.product?.sizeunit}}</ion-col> </ion-row>
+                <ion-row class="enq-details">
+                    <ion-col *ngIf="enquiry?.product?.thickness">Thickness:{{enquiry?.product?.thickness}} mm</ion-col>
+                </ion-row>
+                <ion-row class="enq-details">
+                    <ion-col *ngIf="enquiry?.product?.width">W:{{enquiry?.product?.width}} mm</ion-col>
+                    <ion-col *ngIf="enquiry?.product?.length">L:{{enquiry?.product?.length}} mm</ion-col>
+
+                    <ion-col *ngIf="enquiry?.product?.swg">SWG:{{enquiry?.product?.swg}} mm</ion-col>
+                    <ion-col *ngIf="enquiry?.product?.sch">SCH:{{enquiry?.product?.sch}} mm</ion-col>
+                    <ion-col *ngIf="enquiry?.product?.mm">MM:{{enquiry?.product?.mm}} mm</ion-col>
+                </ion-row>
+
+            </div>
+
+            <div ion-item *ngIf="enquiry?.quote">
+                <div item-left>
+                    <div class="gradeCircle2">{{enquiry?.requirement?.grade}}</div>
+                </div>
+                <h2>Quotation for Requirement</h2>
+                <p>{{enquiry?.requirement?.category}}</p>
+                <!--<p>{{enquiry?.requirement?.quantity}} {{enquiry?requirement?.unit}}</p>-->
+            </div>
+
+            <!--<ion-avatar item-left>
+                <img src="/assets/img/noimage.png">
+            </ion-avatar>-->
+        </ion-item>
+    </ion-list>
+
+
+</ion-content>

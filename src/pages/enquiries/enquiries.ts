@@ -19,13 +19,16 @@ import 'rxjs/add/observable/of';
 export class EnquiriesPage {
 
 	public enquiryList: any;	
-    public enquiryListref: any;	
+    public enquiryListref: any;
+    public supportList: any;	
+    public supportListref: any;	
     public sentList: any;
     public sentListref: any;	
     public currentuser: any;
     public currentuserid: any;
     public segment: any;
     public enqListRev: Observable<any>;
+    public supportListRev: Observable<any>;
     public sentListRev: Observable<any>;
     public loadingPopup: any;
     public loadingPopup2: any;
@@ -47,7 +50,7 @@ export class EnquiriesPage {
         this.currentuser = firebase.auth().currentUser;
               
               //this.currentuserid = this.currentuser.uid;
-        this.segment = "received";
+        this.segment = "support";
         //setTimeout(() => {
             this.setData();
         //},3000);
@@ -124,6 +127,47 @@ export class EnquiriesPage {
 
           this.flag = true;
       });
+
+      this.supportListref = firebase.database().ref('/support/').orderByChild('timestamp');
+      //this.enquiryList = this.af.database.list('/users/' + this.currentuserid + '/enquiries', {
+      //   query: {
+      //       orderByChild: "type",
+      //       equalTo: this.segment
+      //   }
+      //});
+      this.supportListref.on('value', snapshot => {
+
+          //this.enquiryList = this.af.database.list('/users/' + this.currentuserid + '/enquiries', {
+          //query: {
+          //    orderByChild: "type",
+          //    equalTo: this.segment
+          // }
+          //});
+          //console.log("received");
+          //this.enqListRev = [];
+
+          this.supportList = [];
+          this.keys = [];
+          snapshot.forEach(country => {
+
+              console.log(country.key)
+              this.supportList.push(country.val());
+              this.keys.push(country.key);
+
+          });
+          for (var i in this.supportList) {
+              this.supportList[i].key = this.keys[i];
+
+          }
+
+          //this.enqListRev = this.enquiryList.reverse();
+
+          this.supportListRev = Observable.of(this.supportList.reverse());
+          //console.log(this.enqListRev);
+
+          this.flag = true;
+      });
+
 
       this.sentListref = firebase.database().ref('/users/' + this.currentuser.uid + '/enquiries').orderByChild("type").equalTo("sent");
       //this.enquiryList = this.af.database.list('/users/' + this.currentuserid + '/enquiries', {

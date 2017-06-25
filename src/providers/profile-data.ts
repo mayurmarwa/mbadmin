@@ -51,6 +51,13 @@ export class ProfileData {
         });
     }
 
+    updateAccess(uid : any, access: boolean): any {
+        return this.userProfile.child(uid).update({
+            isApproved: access,
+            //lastName: lastName,
+        });
+    }
+
     updateCompanyName(Name: string): any {
         return this.userProfile.child(this.currentUser.uid).update({
             companyname: Name,

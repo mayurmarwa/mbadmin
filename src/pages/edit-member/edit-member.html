@@ -1,0 +1,125 @@
+<!--
+  Generated template for the EditMemberPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Edit Member</ion-title>
+      <ion-buttons end>
+          <button ion-button (click)="confirmDelete()" clear>
+              <ion-icon name="trash"></ion-icon>
+          </button>
+      </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content text-center padding>
+    <form [formGroup]="memberForm" (submit)="showConfirm(memberForm)">
+
+        <ion-item>
+            <ion-label stacked>Name (required)</ion-label>
+            <ion-input #Name formControlName="Name" type="text" maxlength="100"
+                       (input)="Name.value=$event.target.value.toUpperCase()">
+            </ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>Address (required)</ion-label>
+            <ion-input #Address formControlName="Address" type="text"
+                       >
+            </ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>Email (required)</ion-label>
+            <ion-input #Email formControlName="Email" type="text"
+                       value={{member?.Email}}>
+            </ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>Mobile 1</ion-label>
+            <ion-input #Mobile1 formControlName="Mobile 1" type="number"
+                       value="{{member['Mobile 1']}}" placeholder="Enter Mobile No.">
+            </ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>Mobile 2</ion-label>
+            <ion-input #Mobile2 formControlName="Mobile 2" type="number"
+                       value="{{member['Mobile 2']}}" placeholder="Enter Mobile No.">
+            </ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>Mobile 3</ion-label>
+            <ion-input #Mobile3 formControlName="Mobile 3" type="number"
+                       value="{{member['Mobile 3']}}" placeholder="Enter Mobile No.">
+            </ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>STD Code (Leave Blank if 022)</ion-label>
+            <ion-input #std formControlName="std" type="number"
+                       value={{member?.std}} placeholder="Enter STD Code">
+            </ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>Office 1</ion-label>
+            <ion-input #Office1 formControlName="Office 1" type="number"
+                       value="{{member['Office 1']}}" placeholder="Enter Landline No.">
+            </ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>Office 2</ion-label>
+            <ion-input #Office2 formControlName="Office 2" type="number"
+                       value="{{member['Office 2']}}" placeholder="Enter Landline No.">
+            </ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>Office 3</ion-label>
+            <ion-input #Office3 formControlName="Office 3" type="number"
+                       value="{{member['Office 3']}}" placeholder="Enter Landline No.">
+            </ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>ECC/Exc.Reg.No:</ion-label>
+            <ion-input #excise formControlName="excise" type="text"
+                       value={{member?.excise}} placeholder="Enter Excise No.">
+            </ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>Commissionerate:</ion-label>
+            <ion-input #comsn formControlName="comsn" type="text"
+                       value={{member?.comsn}} placeholder="Enter Details">
+            </ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>Range:</ion-label>
+            <ion-input #range formControlName="range" type="text"
+                       value={{member?.range}} placeholder="Enter Range">
+            </ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>Division:</ion-label>
+            <ion-input #division formControlName="division" type="text"
+                       value={{member?.division}} placeholder="Enter Division">
+            </ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>VAT TIN:</ion-label>
+            <ion-input #vat formControlName="vat" type="text"
+                       value={{member?.vat}} placeholder="Enter Details">
+            </ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label stacked>PAN No.:</ion-label>
+            <ion-input #pan formControlName="pan" type="text"
+                       value={{member?.pan}} placeholder="Enter Details">
+            </ion-input>
+        </ion-item>
+        <button ion-button round type="submit" style="margin: 20px">
+            Update
+        </button>
+    </form>
+
+</ion-content>

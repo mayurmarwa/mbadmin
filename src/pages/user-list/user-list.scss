@@ -1,0 +1,37 @@
+page-user-list {
+
+    .up{
+        .price{
+            background-color: #6bd3a8;
+
+            .item{
+          background-color: transparent;
+        }
+            }
+        h3{
+            color: #6bd3a8;
+        }
+        ion-icon{
+            color: white;
+        }
+
+    }
+    .down{
+        .price{
+            background-color: #ff686b;
+
+             .item{
+          background-color: transparent;
+          }
+
+    
+        }
+        h3{
+            color: #ff686b;
+        }
+        ion-icon{
+            color: white;
+        }
+    }
+
+}

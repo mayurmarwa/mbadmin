@@ -3,6 +3,8 @@ import { NavController, NavParams } from 'ionic-angular';
 import { SendEnquiryPage } from '../send-enquiry/send-enquiry';
 import { ProductData } from '../../providers/product-data';
 import { Storage } from '@ionic/storage';
+import { MyProfilePage } from '../my-profile/my-profile';
+
 
 /*
   Generated class for the ProductPage page.
@@ -71,6 +73,10 @@ export class ProductPagePage {
   ionViewDidLoad() {
       console.log('ionViewDidLoad ProductPagePage');
      
+    }
+
+  viewProfile(uid) {
+      this.navCtrl.push(MyProfilePage, { userID: this.product.uid });
   }
 
   sendEnquiry(){

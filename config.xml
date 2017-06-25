@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-versionCode="1" id="com.croogster.metbzr" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>MetBazaar</name>
+<widget android-versionCode="1" id="com.croogster.metbzradm" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>MbAdmin</name>
     <description>Platform for Metal Traders</description>
     <author email="developer@metbazaar.com" href="http://metbazaar.com/">Croogster</author>
     <content src="index.html" />
@@ -55,23 +55,24 @@
     <feature name="StatusBar">
         <param name="ios-package" onload="true" value="CDVStatusBar" />
     </feature>
-    <plugin name="ionic-plugin-keyboard" spec="~2.2.1" />
-    <plugin name="cordova-plugin-whitelist" spec="1.3.1" />
-    <plugin name="cordova-plugin-statusbar" spec="2.2.1" />
+    <plugin name="com-sarriaroman-photoviewer" spec="^1.1.10" />
+    <plugin name="cordova-plugin-camera" spec="2.3.1" />
+    <plugin name="cordova-plugin-compat" spec="1.1.0" />
     <plugin name="cordova-plugin-device" spec="1.1.4" />
-    <plugin name="cordova-plugin-splashscreen" spec="~4.0.1" />
-    <plugin name="cordova-plugin-camera" version="2.3.1" />
-    <plugin name="cordova-plugin-compat" version="1.1.0" />
-    <plugin name="cordova-sqlite-storage" spec="~2.0.2" />
-    <plugin name="cordova-plugin-x-socialsharing" version="5.1.7" />
     <plugin name="cordova-plugin-facebook4" spec="~1.7.4">
         <variable name="APP_ID" value="1832286610428036" />
         <variable name="APP_NAME" value="MetBazaar" />
     </plugin>
-    <plugin name="phonegap-plugin-push" spec="1.8.2">
-        <variable name="SENDER_ID" value="639273963235" />
-    </plugin>
     <plugin name="cordova-plugin-googleplus" spec="~5.1.1">
         <variable name="REVERSED_CLIENT_ID" value="com.googleusercontent.apps.639273963235-hdso68grdhsfpse4mg8d8d567tncoa90" />
+    </plugin>
+    <plugin name="cordova-plugin-splashscreen" spec="~4.0.1" />
+    <plugin name="cordova-plugin-statusbar" spec="2.2.1" />
+    <plugin name="cordova-plugin-whitelist" spec="1.3.1" />
+    <plugin name="cordova-plugin-x-socialsharing" spec="5.1.7" />
+    <plugin name="cordova-sqlite-storage" spec="~2.0.2" />
+    <plugin name="ionic-plugin-keyboard" spec="~2.2.1" />
+    <plugin name="phonegap-plugin-push" spec="1.8.2">
+        <variable name="SENDER_ID" value="639273963235" />
     </plugin>
 </widget>

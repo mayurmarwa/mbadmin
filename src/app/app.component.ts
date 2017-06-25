@@ -80,12 +80,12 @@ export class MyApp {
     ];
 
     this.pushPages = [
-        { title: 'Profile', component: TabProfilePage, icon: 'profile' },
-        { title: 'Post A Requirement', component: PostBuyRequirementsPage, icon: 'post' },
-        { title: 'Browse Requirements', component: BrowseRequirementsPage, icon: 'search' },
-        { title: 'My Products', component: MyProductsPage, icon: 'products' },
-        { title: 'Directory', component: DirectoryPage, icon: 'directory' },
-        { title: 'Speed Dial', component: SpeedDialPage, icon: 'dialer' },
+        //{ title: 'Profile', component: TabProfilePage, icon: 'profile' },
+        //{ title: 'Post A Requirement', component: PostBuyRequirementsPage, icon: 'post' },
+        //{ title: 'Browse Requirements', component: BrowseRequirementsPage, icon: 'search' },
+        //{ title: 'My Products', component: MyProductsPage, icon: 'products' },
+        //{ title: 'Directory', component: DirectoryPage, icon: 'directory' },
+        //{ title: 'Speed Dial', component: SpeedDialPage, icon: 'dialer' },
         //{ title: 'Settings', component: SettingsPage, icon: 'settings' },        
         { title: 'About', component: AboutPage, icon: 'about' },
     ];
@@ -115,7 +115,7 @@ export class MyApp {
                     this.sub1 = this.authService.getFullProfile(this.currentuser.uid).first()
                         .subscribe(user => {
                             console.log(user);
-                            if (user.profiledone) {
+                            if (user.isAdmin) {
                                 setTimeout(() => {
                                     this.splashScreen.hide();
                                 }, 500);
@@ -125,39 +125,23 @@ export class MyApp {
 
                             }
                             else {
-                                console.log(user);
-                                this.authService.createAccount(this.currentuser)
-                                    .then(_ => {
-                                        //this.loading.dismiss().then(() => {
-                                        //console.log(error);
-                                        setTimeout(() => {
-                                            this.splashScreen.hide();
-                                        }, 500);
-                                        this.rootPage = CreateProfilePage;
-                                        //});
+                                let alert = this.alertCtrl.create({
+                                    title: 'Error! Only admin access',
+                                    message: 'Only admins are able to access this application',
+                                    enableBackdropDismiss: false,
+                                    buttons: [
 
-                                    }).catch((error) => {
-                                        setTimeout(() => {
-                                            this.splashScreen.hide();
-                                        }, 500);
-                                        let alert = this.alertCtrl.create({
-                                            title: 'Error! Try Again',
-                                            message: error.message || 'Unknown error',
-                                            enableBackdropDismiss: false,
-                                            buttons: [
+                                        {
+                                            text: 'ok',
+                                            role: 'cancel',
+                                            handler: () => {
+                                                this.alert = null;
+                                            }
+                                        }
+                                    ]
+                                });
+                                alert.present();
 
-                                                {
-                                                    text: 'ok',
-                                                    role: 'cancel',
-                                                    handler: () => {
-                                                        this.alert = null;
-                                                    }
-                                                }
-                                            ]
-                                        });
-                                        alert.present();
-
-                                    });
                             }
 
                         }, (error) => {
@@ -361,7 +345,7 @@ export class MyApp {
           this.sharetxt = snapshot.val().sharetxt;
           this.shareURL = snapshot.val().playURL
 
-          if (!(snapshot.val().version === this.version)) {
+          /**if (!(snapshot.val().version === this.version)) {
 
               if (snapshot.val().force) {
                   let alert = this.alertCtrl.create({
@@ -421,7 +405,7 @@ export class MyApp {
 
 
               }
-          }
+          }**/
       });
 
   }

@@ -23,14 +23,19 @@ export class DirectoryProvider {
   }
 
   setDirectory() {
-      this.directoryRef.on('value', countryList => {
+      this.directoryRef.orderByChild("Name").on('value', countryList => {
           let countries = [];
+          let keys = [];
 
           countryList.forEach(country => {
 
+              keys.push(country.key);
               countries.push(country.val());
           });
+          for (var i in countries) {
+                countries[i].key = keys[i];
 
+            }
           this.directory = countries;
           //this.loadedlist = countries;
           //console.log("here", this.directory);

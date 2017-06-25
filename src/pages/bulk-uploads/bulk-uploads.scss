@@ -1,0 +1,57 @@
+page-bulk-uploads {
+  .fullpage{
+       display: flex;
+  flex-flow: column;
+  height: 100%;
+  }
+
+    .content{
+            position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+
+    }
+
+    .enq-details{
+        white-space:normal;
+    }
+
+    .enq-details ion-col{
+        font-weight:normal;
+        font-size: 1.2rem;
+        color: #666;
+    }
+
+    .gradeCircle2{
+        background-color: #f4f4f4;
+    border: 3px solid #888;
+    border-radius: 40px;
+    box-shadow: 0 0 2px #888;
+    height: 15px;
+    width: 15px;
+    text-align: center;
+    line-height: 4.5em;
+    color: #1a1e5e;
+    font-weight:bold;
+    margin-left: auto;
+    margin-right: auto;
+
+    }
+
+    .gradeCircle3{
+        background-color: #f4f4f4;
+    border: 3px solid #4cff00;
+    border-radius: 40px;
+    box-shadow: 0 0 2px #888;
+    height: 15px;
+    width: 15px;
+    text-align: center;
+    line-height: 4.5em;
+    color: #1a1e5e;
+    font-weight:bold;
+    margin-left: auto;
+    margin-right: auto;
+
+    }
+
+}

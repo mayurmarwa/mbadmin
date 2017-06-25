@@ -2,7 +2,11 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController, ToastController } from 'ionic-angular';
 import { NotificationsPage } from '../notifications/notifications';
 import { QuickFilterPage } from '../quick-filter/quick-filter';
+import { UserList } from '../user-list/user-list';
+import { PricesPage } from '../prices/prices';
+import { DirectoryPage } from '../directory/directory';
 import { SearchCategoriesPage } from '../search-categories/search-categories';
+import { BrowseRequirementsPage } from '../browse-requirements/browse-requirements';
 import { PostBuyRequirementsPage } from '../post-buy-requirements/post-buy-requirements';
 import { CategoryProductsPage } from '../category-products/category-products';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
@@ -55,14 +59,14 @@ export class MarketPage {
 	 //this.productList = af.database.list('/products',{query: {orderByChild: 'timestamp' }});
         this.currentUser = firebase.auth().currentUser;
      //this.categories = af.database.list('/productcategories', { query: { orderByChild: 'catid' } });
-        storage.ready().then(() => {
-            storage.get('currentuser').then((val) => {
+       // storage.ready().then(() => {
+         //   storage.get('currentuser').then((val) => {
 
-                this.currentuser = JSON.parse(val);
+           //     this.currentuser = JSON.parse(val);
 
                 //this.recentList = this.af.database.list();
                 
-                this.recentListRef = firebase.database().ref('/users/' + this.currentUser.uid + '/recent');
+            /*    this.recentListRef = firebase.database().ref('/users/' + this.currentUser.uid + '/recent');
                 //this.enquiryList = this.af.database.list('/users/' + this.currentuserid + '/enquiries', {
                 //   query: {
                 //       orderByChild: "type",
@@ -109,7 +113,7 @@ export class MarketPage {
 
 
             });
-        });
+        });*/
 
 
     }
@@ -129,7 +133,7 @@ export class MarketPage {
    //   this.productListRev = this.productList.map((arr) => { return arr.reverse(); });
  // }
 
-  getGrades() {
+/*  getGrades() {
       this.selectedGrade = "";
       if (this.selectedCat == 1 || this.selectedCat == 2 || this.selectedCat == 3 || this.selectedCat === '4a' || this.selectedCat === '4b' || this.selectedCat === '4c' || this.selectedCat === '4d' || this.selectedCat === '4e' || this.selectedCat == 5 || this.selectedCat == 6 || this.selectedCat == 7) {
           
@@ -231,22 +235,22 @@ export class MarketPage {
           this.navCtrl.push(QuickFilterPage, { catid: this.selectedCat, grade: this.selectedGrade, alloy: this.selectedAlloy });
       }
 
-  }
+  }*/
 
   openproductpage(product) {
 
       this.navCtrl.push(ProductPagePage, {product: product});
   }
 
-  opennotificationsPage(product) {
+/*  opennotificationsPage(product) {
 
       this.navCtrl.push(NotificationsPage);
   }
-
+ 
   selectSub(catid) {
       this.navCtrl.push(SelectSubcatPage, { catid: catid });
   }
-
+ 
   categoryProducts(catid: string, title: string) {
       //console.log(category);
       this.navCtrl.push(CategoryProductsPage, { catid: catid, cattitle: title });
@@ -254,10 +258,27 @@ export class MarketPage {
   openNotificationsPage() {
       this.navCtrl.push(NotificationsPage);
   }
+  */
+    openDirectory() {
+      this.navCtrl.push(DirectoryPage);
+  }
+    openBulkPage() {
+      this.navCtrl.push('BulkUploadsPage');
+  }
   openSearchPage() {
       this.navCtrl.push(SearchCategoriesPage);
   }
   openRequirementPage() {
-      this.navCtrl.push(PostBuyRequirementsPage);
+      this.navCtrl.push(BrowseRequirementsPage);
+  }
+  openUserList() {
+      this.navCtrl.push(UserList);
+  }
+  openPrices() {
+      this.navCtrl.push(PricesPage);
+  }
+
+   openNotificationsPage() {
+      this.navCtrl.push(NotificationsPage);
   }
 }

@@ -22,6 +22,8 @@ export class ProductData {
     currentUser: any;
     myProductList: any;
     recentList: any;
+    pricemcxList: any;
+    pricelmeList: any;
     count: any;
     counter: any;
     public products;
@@ -30,6 +32,8 @@ export class ProductData {
 
     constructor(public http: Http, public af: AngularFire, public storage: Storage) {
         this.productList = firebase.database().ref('/products');
+        this.pricemcxList = firebase.database().ref('/prices/mcx');
+        this.pricelmeList = firebase.database().ref('/prices/lme');
 
 
 
@@ -195,6 +199,63 @@ export class ProductData {
   * This one takes 2 string parameters, firstName & lastName, it just saves those 2 to the userProfile/uid node
   * for the current user as the firstName & lastName properties.
   */
+    updatemcxPrices(key: any, Name: string, Price: any, Type: string): any {
+
+       return this.pricemcxList.child(key).update({
+
+           name: Name,
+           time: firebase.database['ServerValue']['TIMESTAMP'],
+           price: Price,
+           type: Type
+        });
+       
+    }
+    addmcxPrices(Name: string, Price: any, Type: string): any {
+
+        return this.pricemcxList.push({
+
+            name: Name,
+            time: firebase.database['ServerValue']['TIMESTAMP'],
+            price: Price,
+            type: Type
+        });
+
+    }
+    addlmePrices(Name: string, Price: any, Type: string): any {
+
+        return this.pricelmeList.push({
+
+            name: Name,
+            time: firebase.database['ServerValue']['TIMESTAMP'],
+            price: Price,
+            type: Type
+        });
+
+    }
+    deletemcx(key: any): any {
+
+        this.pricemcxList.child(key).remove();
+        
+    }
+
+    updatelmePrices(key: any, Name: string, Price: any, Type: string): any {
+
+       return this.pricelmeList.child(key).update({
+
+           name: Name,
+           time: firebase.database['ServerValue']['TIMESTAMP'],
+           price: Price,
+           type: Type
+        });
+        
+    }
+
+    deletelme(key: any): any {
+
+        this.pricelmeList.child(key).remove();
+
+    }
+
     updateName(key: any, Name: string): any {
 
         this.myProductList.child(key).update({

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { RequirementDetailsPage } from '../requirement-details/requirement-details';
+import { PostBuyRequirementsPage  } from '../post-buy-requirements/post-buy-requirements';
 import { Storage } from '@ionic/storage';
 import firebase from 'firebase';
 
@@ -26,11 +27,12 @@ export class MyRequirementsPage {
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage) {
 
-        storage.ready().then(() => {
-            storage.get('currentuser').then((val) => {
+        //storage.ready().then(() => {
+            //storage.get('currentuser').then((val) => {
 
-                this.currentuser = JSON.parse(val);
-                this.requirementListref = firebase.database().ref('/requirements').orderByChild("uid").equalTo(this.currentuser.uid);
+                //this.currentuser = JSON.parse(val);
+                this.currentuser = navParams.get("userID");
+                this.requirementListref = firebase.database().ref('/requirements').orderByChild("uid").equalTo(this.currentuser);
                 //this.enquiryList = this.af.database.list('/users/' + this.currentuserid + '/enquiries', {
                 //   query: {
                 //       orderByChild: "type",
@@ -60,11 +62,11 @@ export class MyRequirementsPage {
                     this.updateList();
                 });
 
-            })
-                .catch((err) =>
-                    console.log(err));
-        }).catch((err) =>
-            console.log(err)); 
+            //})
+              //  .catch((err) =>
+               //     console.log(err));
+        //}).catch((err) =>
+          //  console.log(err)); 
 
 
 
@@ -87,5 +89,7 @@ export class MyRequirementsPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad MyRequirementsPage');
   }
-
+    addNew(){
+        this.navCtrl.push(PostBuyRequirementsPage, {userID: this.currentuser})
+    }
 }

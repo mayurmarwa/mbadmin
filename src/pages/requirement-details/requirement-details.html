@@ -2,7 +2,7 @@
 
   <ion-navbar>
     <ion-title>Requirement Details</ion-title>
-      <ion-buttons *ngIf="this.requirement?.uid === this.currentuser?.uid" end>
+      <ion-buttons end>
           <button ion-button (click)="confirmDelete()" clear>
               <ion-icon name="trash"></ion-icon>
           </button>
@@ -77,8 +77,8 @@
     </ion-list>   
  
     <div *ngIf="this.requirement?.uid != this.currentuser?.uid" text-center style="padding: 20px;">
-        <button ion-button round (click)="sendQuote()">
-            Send Quotation
+        <button ion-button round (click)="viewProfile()">
+            View Buyer Profile
         </button>
     </div>
     <div *ngIf="this.requirement?.uid === this.currentuser?.uid" text-center style="padding: 20px;">

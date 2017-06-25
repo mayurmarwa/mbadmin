@@ -2,6 +2,12 @@
 
   <ion-navbar>
     <ion-title>Member Details</ion-title>
+      <ion-buttons end>
+          <button ion-button color="primary" outline (click)="editMember()">
+
+              Edit
+          </button>
+      </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -75,13 +81,13 @@
                 <ion-col>
                     <ion-item text-wrap *ngIf="member?.excise">
                         <p>ECC/Exc.Reg.No:</p>
-                        <h2>{{userProfile?.excise}}</h2>
+                        <h2>{{member?.excise}}</h2>
                     </ion-item>
                 </ion-col>
                 <ion-col>
                     <ion-item text-wrap *ngIf="member?.comsn">
                         <p>Commissionerate:</p>
-                        <h2>{{userProfile?.comsn}}</h2>
+                        <h2>{{member?.comsn}}</h2>
                     </ion-item>
                 </ion-col>
             </ion-row>
@@ -89,13 +95,13 @@
                 <ion-col>
                     <ion-item text-wrap *ngIf="member?.range">
                         <p>Range:</p>
-                        <h2>{{userProfile?.range}}</h2>
+                        <h2>{{member?.range}}</h2>
                     </ion-item>
                 </ion-col>
                 <ion-col>
                     <ion-item text-wrap *ngIf="member?.division">
                         <p>Division:</p>
-                        <h2>{{userProfile?.division}}</h2>
+                        <h2>{{member?.division}}</h2>
                     </ion-item>
                 </ion-col>
             </ion-row>
@@ -103,13 +109,13 @@
                 <ion-col>
                     <ion-item text-wrap *ngIf="member?.vat">
                         <p>VAT TIN:</p>
-                        <h2>{{userProfile?.vat}}</h2>
+                        <h2>{{member?.vat}}</h2>
                     </ion-item>
                 </ion-col>
                 <ion-col>
                     <ion-item text-wrap *ngIf="member?.pan">
                         <p>PAN No.:</p>
-                        <h2>{{userProfile?.pan}}</h2>
+                        <h2>{{member?.pan}}</h2>
                     </ion-item>
                 </ion-col>
             </ion-row>

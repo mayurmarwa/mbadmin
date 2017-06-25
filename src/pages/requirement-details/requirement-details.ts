@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController, ViewController, ToastController  } from 'ionic-angular';
-import { SendQuotationPage } from '../send-quotation/send-quotation'
+import { SendQuotationPage } from '../send-quotation/send-quotation';
+import { MyProfilePage } from '../my-profile/my-profile';
 import { Storage } from '@ionic/storage';
 import { ProductData } from '../../providers/product-data';
 
@@ -44,6 +45,10 @@ export class RequirementDetailsPage {
       console.log('ionViewDidLoad RequirementDetailsPage');
      // console.log(this.viewCtrl.index);
 	//console.log(this.requirement);
+    }
+
+  viewProfile(uid) {
+      this.navCtrl.push(MyProfilePage, { userID: this.requirement.uid });
   }
 
   sendQuote(){
@@ -69,7 +74,7 @@ export class RequirementDetailsPage {
                           duration: 2000,
                           position: 'middle'
                       });
-                      toast.present().then(() => { this.navCtrl.popToRoot; });
+                      toast.present().then(() => { this.navCtrl.pop(); });
                       
                       
                   }

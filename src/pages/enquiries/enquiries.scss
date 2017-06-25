@@ -25,11 +25,27 @@ page-enquiries {
 
     .gradeCircle2{
         background-color: #f4f4f4;
-    border: 3px solid #1a1e5e;
+    border: 3px solid #888;
     border-radius: 40px;
     box-shadow: 0 0 2px #888;
-    height: 75px;
-    width: 75px;
+    height: 15px;
+    width: 15px;
+    text-align: center;
+    line-height: 4.5em;
+    color: #1a1e5e;
+    font-weight:bold;
+    margin-left: auto;
+    margin-right: auto;
+
+    }
+
+    .gradeCircle3{
+        background-color: #f4f4f4;
+    border: 3px solid #4cff00;
+    border-radius: 40px;
+    box-shadow: 0 0 2px #888;
+    height: 15px;
+    width: 15px;
     text-align: center;
     line-height: 4.5em;
     color: #1a1e5e;

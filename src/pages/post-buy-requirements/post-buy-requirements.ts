@@ -35,8 +35,8 @@ export class PostBuyRequirementsPage {
     constructor(public navCtrl: NavController, public navParams: NavParams, public af: AngularFire, public formBuilder: FormBuilder, public alertCtrl: AlertController, public loadingCtrl: LoadingController, public toastCtrl: ToastController) {
 
         this.emptyname = '';
-        this.currentuser = firebase.auth().currentUser;
-        this.currentuserid = this.currentuser.uid;
+        //this.currentuser = firebase.auth().currentUser;
+        this.currentuserid = navParams.get("userID");
         this.requirements = af.database.list('/requirements');
         //this.gradeList = af.database.list('/grades');
         this.selectedCat = "Stainless Steel Coils";
@@ -158,7 +158,7 @@ export class PostBuyRequirementsPage {
       this.requirements.push(this.requirementForm.value).then(data => {
 
           console.log(data.key);
-          this.af.database.object('users/' + this.currentuser.uid + '/requirements/' + data.key).set(
+          this.af.database.object('users/' + this.currentuserid + '/requirements/' + data.key).set(
               {
 
                   islive: true,
@@ -170,7 +170,7 @@ export class PostBuyRequirementsPage {
           ).then(() => {
               this.loading.dismiss().then(() => {
                   let toast = this.toastCtrl.create({
-                      message: 'Requirement posted. Check My Requirements for details...',
+                      message: 'Requirement posted.',
                       duration: 3500,
                       position: 'middle'
                   });

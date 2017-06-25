@@ -74,4 +74,8 @@ export class MemberDetailsPage {
       }
   }
 
+    editMember(){
+        this.navCtrl.push('EditMemberPage',{member: this.member })
+    }
+
 }

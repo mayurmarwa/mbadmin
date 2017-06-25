@@ -28,6 +28,46 @@
                 </div>
             </ion-col>
         </ion-row>
+        <ion-row>
+            <ion-col text-center>
+                <button color="call" *ngIf="!userProfile?.isApproved" style="margin-top:20px" ion-button (click)="updateAccess()" outline>
+
+                    Click to Approve user
+                </button>
+                <button *ngIf="userProfile?.isApproved" style="margin-top:20px" ion-button (click)="updateAccess()" outline>
+
+                    Click to Disable User
+                </button>
+            </ion-col>
+        </ion-row>
+
+        <ion-row *ngIf="userProfile?.isApproved">
+            <ion-col text-center>
+                <button color="call"  style="margin-top:20px" ion-button (click)="sendMessage()" outline>
+
+                    Send Message
+                </button>
+               </ion-col>
+        </ion-row>
+
+        <ion-row *ngIf="userProfile?.isApproved">
+            <ion-col text-center>
+                <button color="call" style="margin-top:20px" ion-button (click)="viewProducts()" outline>
+
+                     Products
+                </button>
+            </ion-col>
+        </ion-row>
+
+        <ion-row *ngIf="userProfile?.isApproved">
+            <ion-col text-center>
+                <button color="call" style="margin-top:20px" ion-button (click)="viewRequirements()" outline>
+
+                     Requirements
+                </button>
+            </ion-col>
+        </ion-row>
+
 
         <ion-list no-lines>
             <div text-center>

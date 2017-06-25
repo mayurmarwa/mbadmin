@@ -17,9 +17,13 @@ export class SelectCategoryPage {
 
     categories: FirebaseListObservable<any>;
     public parentcat: any;
+    public userID: any;
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public af: AngularFire) {
         this.categories = af.database.list('/productcategories',{query: {orderByChild: 'catid'}});
+        this.userID = navParams.get("userID");
+        console.log(this.userID);
+
     }
 
   ionViewDidLoad() {
@@ -38,7 +42,7 @@ export class SelectCategoryPage {
           this.categories = this.af.database.list('/productcategories/' + this.parentcat + '/subcategories/' + category.$key + '/types/', { query: { orderByChild: 'oid' } });
       }
       else {
-          this.navCtrl.push(AddProductPage, { category: category });
+          this.navCtrl.push(AddProductPage, { category: category, userID: this.userID });
       }
   }
 

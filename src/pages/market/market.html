@@ -1,24 +1,26 @@
 <ion-header>
 
     <ion-navbar>
+        <ion-title>Home</ion-title>
+
         <button ion-button menuToggle>
             <ion-icon name="menu"></ion-icon>
         </button>
-        <ion-title>Home</ion-title>
-        <!--<ion-buttons end>
+        <!--<ion-title>Home</ion-title>
+        <ion-buttons end>
              <button ion-button (click)="openChannelPage($event)" clear>
                 <ion-icon name="add"></ion-icon>
             </button>
-        </ion-buttons>-->
+        </ion-buttons>
         <ion-buttons end>
             <button ion-button (click)="openSearchPage()" outline >
                 <ion-icon name="search" style="padding-right:5px"></ion-icon>
                 Search
-            </button>
+            </button>-->
          <!--<button ion-button (click)="openNotificationsPage()" clear>
             <ion-icon name="alert"></ion-icon>
-        </button>-->
-    </ion-buttons>
+        </button>
+    </ion-buttons>-->
 
     </ion-navbar>
 
@@ -29,19 +31,75 @@
     <div class="header-image"></div>
 
     <div class="main-content">-->
-<<ion-content text-center >
+<ion-content text-center >
 
-     <div class="card-background-page">
+    <ion-row>
+        <ion-col text-center>
+            <button style="margin-top:20px" ion-button (click)="openUserList()" outline>
+
+                Users
+            </button>
+        </ion-col>
+        <ion-col text-center>
+            <button style="margin-top:20px" ion-button (click)="openBulkPage()" outline>
+
+                Bulk Uploads
+            </button>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col text-center>
+            <button style="margin-top:20px" ion-button (click)="openPrices()" outline>
+
+                Prices
+            </button>
+        </ion-col>
+        <ion-col text-center>
+            <button style="margin-top:20px" ion-button (click)="openNotificationsPage()" outline>
+
+                Notifications
+            </button>
+        </ion-col>
+    </ion-row>
+    
+    <ion-row>
+        <ion-col text-center>
+            <button style="margin-top:20px" ion-button (click)="openSearchPage()" outline>
+
+                Products
+            </button>
+        </ion-col>
+        <ion-col text-center>
+            <button style="margin-top:20px" ion-button (click)="openRequirementPage()" outline>
+
+                Requirements
+            </button>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col text-center>
+            <button style="margin-top:20px" ion-button (click)="openDirectory()" outline>
+
+                Directory
+            </button>
+        </ion-col>
+    </ion-row>
+
+    
+
+   
+
+     <!--<div class="card-background-page">
          <ion-card class="top-card">
              <img src="assets/img/home-top.png" />
              <div class="card-title">Post Your Requirement & Get Instant Quotes From Sellers</div>
              <ion-row class="card-subtitle">
                  <ion-col><div tappable style="color:white;" ion-button outline (click)="openRequirementPage()">Post Requirement</div></ion-col>
-                 <!--<ion-col col-6><div style="color:white;" ion-button outline>Add Product</div></ion-col>-->
+                 <!--<ion-col col-6><div style="color:white;" ion-button outline>Add Product</div></ion-col>
              </ion-row>
 
          </ion-card>
-     </div>
+     </div>-->
 
 
 
@@ -120,7 +178,7 @@
                  <h4>Dolor sit amet</h4>
              </ion-col>
          </ion-row>
-     </ion-scroll>-->
+     </ion-scroll>
 
 
 
@@ -238,7 +296,7 @@
             </ion-card>
         </ion-item>
     </ion-list
-    </div>>-->
+    </div>
     <div class="quick-filter" >
         Quick Filter
         <ion-item >
@@ -415,5 +473,5 @@
                  </ion-card>
              </ion-col>
          </ion-row>
-     </div>
+     </div>-->
 </ion-content>

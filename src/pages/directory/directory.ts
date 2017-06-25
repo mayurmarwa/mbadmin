@@ -104,6 +104,10 @@ export class DirectoryPage {
 
   }
 
+    addMember(){
+    this.navCtrl.push('DirectoryAddPage');
+    }
+
   viewDetails(member) {
       //let profileModal = this.modalCtrl.create(MemberDetailsPage, { member: member });
       //profileModal.present();
